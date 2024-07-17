@@ -7,3 +7,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+.glassEffect {
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+#bg-size{
+  background-size: 250px 250px;
+}
