@@ -1,76 +1,59 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
-import { AuthContext } from "../../../ContextApi/UserContext";
+import { RiSearchLine } from "react-icons/ri";
+import { FaHeart } from "react-icons/fa";
+import { CiShoppingCart } from "react-icons/ci";
+import { RxAvatar } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import UserContext, { AuthContext } from "../../../ContextApi/UserContext";
 
 const Navbar = () => {
-  const { user, setRefresh, refresh } = useContext(AuthContext);
-  const handleLogout = () => {
-    localStorage.removeItem("AdhunikToken");
-    setRefresh(refresh + 1);
-  };
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  console.log(user?.phone);
   return (
-    <div className="navbar bg-base-100">
-      <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+    <div className="w-full h-24 flex items-center justify-between gap-x-3 border-b border-white p-2">
+      <div className="w-full flex items-center border border-white bg-[#E7E7E7] rounded-full h-full p-1">
+        <Link to={"/"} className="px-5 border-2 border-red-600 cursor-pointer">
+          <h1>Adunik BD</h1>
+        </Link>
+        <input
+          type="text"
+          name=""
+          id=""
+          className="bg-[#E7E7E7] outline-none pl-5 w-full border-2"
+        />
+        <button className="bg-black text-white h-full px-12 rounded-full flex items-center gap-x-3">
+          Search <RiSearchLine size={24} />
+        </button>
       </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered w-24 md:w-auto"
-          />
+      <div className="h-full flex items-center gap-x-3">
+        <div className="h-full flex gap-3">
+          <button className="bg-white rounded-full w-28 h-full">Sell</button>
+          <button className="bg-white rounded-full w-28 h-full">App</button>
         </div>
+        <button className="h-full w-20 rounded-full bg-white flex items-center justify-center">
+          <FaHeart size={24} color="red" />
+        </button>
+        <button className="h-full w-20 rounded-full bg-slate-500 flex items-center justify-center">
+          <CiShoppingCart size={24} color="" />
+        </button>
+        {/* toggle user and login */}
         <div>
-          {user ? (
-            <div>
-              <div className="dropdown dropdown-end">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="btn btn-ghost btn-circle avatar"
-                >
-                  <div className="w-10 rounded-full">
-                    <img
-                      alt="Tailwind CSS Navbar component"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    />
-                  </div>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-                >
-                  <li>
-                    <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <Link
-                      onClick={() => {
-                        handleLogout();
-                      }}
-                    >
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          {user?.phone ? (
+            <Link
+              to={`/dashboard/user/profile`}
+              className="h-full w-20 rounded-full bg-white flex items-center justify-center"
+            >
+              <RxAvatar size={24} color="" />
+            </Link>
           ) : (
-            <>
-              <Link to="/signUp" className="btn btn-primary">
-                Sign UP
-              </Link>
-              <Link to="/login" className="btn btn-primary ml-5">
-                Login
-              </Link>
-            </>
+            <Link
+              to={`/login`}
+              className="btn btn-primary"
+            >
+              Login
+            </Link>
           )}
         </div>
       </div>

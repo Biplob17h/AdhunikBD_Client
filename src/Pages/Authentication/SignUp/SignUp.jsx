@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { MainApiLink } from "../../../App";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../ContextApi/UserContext";
 
 const SignUp = () => {
@@ -96,6 +96,12 @@ const SignUp = () => {
               </button>
             </div>
           </form>
+        </div>
+        {/* toggle to login page */}
+        <div>
+          <h1 className="text-[18px]">
+            {`Already have a account`} <Link className="text-[19px] font-semibold ml-2 hover:underline" to="/login">Login</Link>
+          </h1>
         </div>
       </div>
     </div>

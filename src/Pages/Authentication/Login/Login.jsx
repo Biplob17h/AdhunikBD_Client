@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../ContextApi/UserContext";
 import { MainApiLink } from "../../../App";
 import setTokenToLocalStorage from "../../../Components/SetTokenToLocalStroge";
@@ -34,9 +34,9 @@ const Login = () => {
         if (data?.status === "success") {
           toast.success("User login successful!");
           form.reset();
-          navigate("/");
+          navigate("/dashboard/user/profile");
           setRefresh(refresh + 1);
-          setTokenToLocalStorage(data?.data?.token)
+          setTokenToLocalStorage(data?.data?.token);
           console.log(data);
         } else {
           setError(data?.message);
@@ -85,6 +85,12 @@ const Login = () => {
               </button>
             </div>
           </form>
+        </div>
+        {/* toggle to sign up page */}
+        <div>
+          <h1 className="text-[18px]">
+            {`Don't have a account`} <Link className="text-[19px] font-semibold ml-2 hover:underline" to="/signup">Sign up</Link>
+          </h1>
         </div>
       </div>
     </div>

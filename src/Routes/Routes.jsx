@@ -3,6 +3,9 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Authentication/Login/Login";
 import SignUp from "../Pages/Authentication/SignUp/SignUp";
+import UserDashBoard from "../Pages/UserDashBoard/UserDashBoard";
+import DashboardProfilePage from "../Pages/UserDashBoard/DashboardProfilePage";
+import DashboardOrderPage from "../Pages/UserDashBoard/DashboardOrderPage";
 
 const routes = createBrowserRouter([
   {
@@ -15,6 +18,20 @@ const routes = createBrowserRouter([
 
     ],
   },
+  {
+    path : "/dashboard/user",
+    element : <UserDashBoard></UserDashBoard>,
+    children : [
+      {
+        path : '/dashboard/user/profile',
+        element : <DashboardProfilePage></DashboardProfilePage>
+      },
+      {
+        path : '/dashboard/user/order',
+        element : <DashboardOrderPage></DashboardOrderPage>
+      },
+    ]
+  }
 ]);
 
 export default routes;
