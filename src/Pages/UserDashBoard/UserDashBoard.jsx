@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import Navbar from "../Shared/Navbar/Navbar";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../ContextApi/UserContext";
 import toast from "react-hot-toast";
 
 const UserDashBoard = () => {
-  const { setRefresh, refresh } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
     localStorage.removeItem("AdhunikToken");
-    setRefresh(refresh + 1);
     toast.success("Logout successful");
     navigate("/login");
     window.location.reload();
@@ -37,13 +34,16 @@ const UserDashBoard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          <ul className="menu bg-base-200 text-base-content min-h-full w-52 p-4">
             {/* Sidebar content here */}
             <li>
-              <Link to="/dashboard/user/profile">Home</Link>
+              <Link to="/dashboard/user/profile">My Profile</Link>
             </li>
             <li>
-              <Link to="/dashboard/user/order">Order</Link>
+              <Link to="/dashboard/user/order">My Orders</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/user/update">Update My Profile</Link>
             </li>
             <li
               onClick={() => {

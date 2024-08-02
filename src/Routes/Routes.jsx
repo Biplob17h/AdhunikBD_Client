@@ -6,6 +6,7 @@ import SignUp from "../Pages/Authentication/SignUp/SignUp";
 import UserDashBoard from "../Pages/UserDashBoard/UserDashBoard";
 import DashboardProfilePage from "../Pages/UserDashBoard/DashboardProfilePage";
 import DashboardOrderPage from "../Pages/UserDashBoard/DashboardOrderPage";
+import UpdateUserProfile from "../Pages/UserDashBoard/UpdateUserProfile";
 
 const routes = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
       {
         path : '/dashboard/user/order',
         element : <DashboardOrderPage></DashboardOrderPage>
+      },
+      {
+        path : '/dashboard/user/update',
+        element : <UpdateUserProfile></UpdateUserProfile>
       },
     ]
   }

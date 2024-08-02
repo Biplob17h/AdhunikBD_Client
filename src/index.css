@@ -17,3 +17,14 @@
 #bg-size{
   background-size: 250px 250px;
 }
+
+.hide-arrows::-webkit-outer-spin-button,
+.hide-arrows::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hide-arrows {
+  -moz-appearance: textfield;
+}
+
